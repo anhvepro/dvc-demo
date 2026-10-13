@@ -1,395 +1,102 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cổng Dịch vụ công Quốc gia (Hệ thống Mô phỏng Giáo dục)</title>
-    <script src="https://tailwindcss.com/"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        .dvc-header-bg { background-color: #ffffff; }
-        .dvc-title-red { color: #8B0000; }
-        .dvc-nav-bg { background: #8B0000; }
-        .hero-banner { 
-            background: linear-gradient(135deg, #d35400 0%, #c0392b 100%);
-            position: relative;
-        }
-        .gold-btn { background-color: #ffc107; color: #333; transition: all 0.2s; }
-        .gold-btn:hover { background-color: #ffb300; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cổng Dịch vụ công Quốc gia - Giao diện mô phỏng</title>
+<style>
+:root{--orange:#d77d58;--orange-dark:#bd5e3d;--gold:#ffc34f;--ink:#263746;--muted:#687a89;--pale:#f2f3f5;--teal:#69b5ae;--red:#b84e4e}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:#fff;font-size:14px}
+button,input{font:inherit}button{cursor:pointer}.topline{height:6px;background:#f8d8d5}
+.browser-note{height:26px;background:#fff8f7;border-bottom:1px solid #f2e5e3;color:#7b7777;font-size:12px;padding:5px 18px;white-space:nowrap;overflow:hidden}
+header{height:96px;display:flex;align-items:center;justify-content:center;border-bottom:1px solid #eee}.brand{width:min(1010px,94%);display:flex;align-items:center;gap:30px}.emblem{width:76px;height:76px;border-radius:50%;background:#e51c26;border:4px solid #ffce45;color:#ffdc52;display:grid;place-items:center;font-size:36px;box-shadow:inset 0 0 0 3px #f5a623}.brand-title{color:#a4413c;font-family:Georgia,serif;font-weight:bold;font-size:24px;letter-spacing:.2px}.tagline{font-style:italic;color:#b55e52;margin-top:8px;font-size:15px}.login{margin-left:auto;background:white;border:1px solid var(--orange);color:var(--orange-dark);padding:11px 16px;border-radius:3px}.login:hover{background:#fff3ee}
+nav{height:42px;background:#f5f5f5;display:flex;justify-content:center;position:relative;z-index:5;border-bottom:1px solid #e5e5e5}.navinner{width:min(1010px,100%);display:flex;align-items:stretch}.home{background:var(--orange);color:white;border:0;width:48px;font-size:22px}.navitem{position:relative}.navitem>button{height:100%;padding:0 12px;border:0;background:transparent;color:#263746}.navitem>button:hover,.navitem>button:focus{background:#eee}.dropdown{display:none;position:absolute;top:100%;left:0;min-width:230px;background:white;box-shadow:0 5px 18px #0002;border:1px solid #e4e4e4}.dropdown button{display:block;width:100%;padding:12px 14px;text-align:left;border:0;background:white;color:#42566a}.dropdown button:hover{background:#f6f6f6;color:var(--orange-dark)}.navitem.open .dropdown{display:block}
+.hero{height:180px;background:linear-gradient(90deg,#cb7d5bdf,#d98c69e8),repeating-linear-gradient(45deg,#d98c69 0 20px,#d18562 20px 40px);display:flex;justify-content:center;align-items:center;padding:24px}.hero-inner{width:min(852px,100%)}.searchrow{height:38px;display:flex;background:#fff;border-radius:4px;overflow:hidden;box-shadow:0 1px 2px #0001}.searchrow input{border:0;outline:0;flex:1;padding:0 12px;min-width:0}.advanced{border:0;border-left:1px solid #ddd;background:#fff;padding:0 16px;color:#3c5366;white-space:nowrap}.searchbtn{width:52px;border:0;background:#fff;color:#4c6070;font-size:18px}.searchbtn:hover,.advanced:hover{background:#f5f5f5}.quicklinks{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:27px}.quicklinks button{border:0;border-radius:4px;background:var(--gold);min-height:61px;padding:10px 15px;font-size:16px;color:#182c3d;box-shadow:0 1px 2px #0001}.quicklinks button:hover{background:#ffd16d;transform:translateY(-1px)}
+.announcement{min-height:121px;background:linear-gradient(90deg,#f7f7f7,#fff);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}.ann-inner{width:min(850px,94%);display:flex;align-items:center;gap:12px;position:relative;z-index:1}.arrow{border:0;background:transparent;font-size:24px;color:#263746;padding:10px}.newslist{display:grid;grid-template-columns:repeat(3,1fr);flex:1}.news{padding:0 16px;border-right:1px solid #ddd;min-height:70px;cursor:pointer}.news:last-child{border:0}.news strong{display:block;font-size:13px;line-height:1.35;margin-bottom:8px}.news p{margin:0;font-size:11px;line-height:1.4;color:#7d8992}.news:hover strong{color:var(--orange-dark)}.lotus{position:absolute;right:0;top:0;height:100%;width:250px;opacity:.55;background:radial-gradient(ellipse at 60% 70%,#f7e8b9 0 8%,transparent 9%),radial-gradient(ellipse at 75% 60%,#fff0c8 0 11%,transparent 12%),radial-gradient(ellipse at 88% 80%,#e9d6a7 0 12%,transparent 13%);pointer-events:none}
+main{width:min(852px,94%);margin:28px auto 60px}.columns{display:grid;grid-template-columns:1fr 1fr;gap:41px}.section-title{text-align:center;font-size:21px;color:#d8754f;font-weight:400;padding:0 0 14px;border-bottom:3px solid var(--orange);margin:0 0 13px}.service{width:100%;display:flex;align-items:center;gap:14px;text-align:left;border:0;border-radius:7px;background:#f1f2f4;color:#536c7e;margin:0 0 10px;min-height:38px;padding:9px 13px;transition:.15s}.service:hover{background:#e9eeee;transform:translateX(2px)}.service .ico{font-size:20px;color:var(--teal);width:21px;text-align:center}.business .ico{color:var(--red)}.service-detail{display:none;margin:-5px 0 10px;padding:12px 14px;border:1px solid #e5e8ea;border-radius:0 0 7px 7px;background:#fff;color:#586b78;line-height:1.7}.service-detail a{color:#bd6445;text-decoration:none;display:block}.service-detail a:hover{text-decoration:underline}.service.active{background:#e8f4f2;border-radius:7px 7px 0 0}.service.active+.service-detail{display:block}
+.results{display:none;background:#fff;border:1px solid #e2e5e8;border-radius:6px;padding:18px;margin:18px 0}.results h3{margin:0 0 12px;color:#b85c42}.result-item{padding:12px 0;border-top:1px solid #eee;display:flex;justify-content:space-between;gap:12px;align-items:center}.result-item button{background:white;border:1px solid #d78360;color:#b65c41;padding:7px 10px;border-radius:3px}.empty{color:#687a89}.footer{background:#f6f6f6;text-align:center;padding:25px;color:#6f7d86;font-size:12px;border-top:1px solid #e8e8e8}
+.modal-backdrop{display:none;position:fixed;inset:0;background:#17232f88;z-index:20;align-items:center;justify-content:center;padding:16px}.modal-backdrop.show{display:flex}.modal{width:min(430px,100%);background:white;border-radius:8px;padding:24px;box-shadow:0 12px 40px #0003;position:relative}.modal h2{margin:0 0 8px;color:#b6533c;font-size:21px}.modal p{color:#687a89;line-height:1.5}.close{position:absolute;right:14px;top:12px;border:0;background:transparent;font-size:24px;color:#75818a}.field{display:block;margin:14px 0 5px;color:#425565}.modal input{width:100%;padding:11px;border:1px solid #cfd7dc;border-radius:4px;margin-top:6px}.primary{width:100%;background:var(--orange);border:0;color:white;padding:11px;border-radius:4px;margin-top:17px}.primary:hover{background:var(--orange-dark)}.message{font-size:13px;color:#397e69;min-height:18px;margin-top:10px}
+@media(max-width:700px){header{height:auto;padding:15px 0}.brand{gap:12px}.emblem{width:54px;height:54px;font-size:26px}.brand-title{font-size:16px}.tagline{font-size:12px}.login{padding:8px;font-size:12px}.navinner{overflow-x:auto}.navitem>button{white-space:nowrap;font-size:12px;padding:0 9px}.hero{height:auto;padding:20px 14px}.quicklinks{grid-template-columns:1fr;gap:8px;margin-top:14px}.quicklinks button{min-height:45px;font-size:14px}.advanced{padding:0 8px;font-size:12px}.announcement{min-height:110px}.newslist{grid-template-columns:1fr}.news{display:none;border:0}.news:first-child{display:block}.lotus{opacity:.18}.columns{grid-template-columns:1fr;gap:25px}main{margin-top:22px}.section-title{font-size:19px}}
+</style>
 </head>
-<body class="bg-gray-100 font-sans min-h-screen flex flex-col justify-between">
-
-    <!-- HEADER CHÍNH GIỐNG THẬT -->
-    <header class="dvc-header-bg shadow-sm sticky top-0 z-50 border-b border-gray-200">
-        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
-            <!-- Logo & Title -->
-            <div class="flex items-center space-x-3 cursor-pointer" onclick="goHome()">
-                <img src="https://dichvucong.gov.vn/p/home/dvc-home-assets/images/quochuy.png" alt="Quốc Huy" class="h-12 w-12 object-contain">
-                <div>
-                    <h1 class="dvc-title-red font-bold text-lg md:text-xl uppercase tracking-wide leading-tight" style="font-family: serif;">CỔNG DỊCH VỤ CÔNG QUỐC GIA</h1>
-                    <p class="text-[11px] text-gray-600 font-medium">Kết nối, cung cấp thông tin và dịch vụ công mọi lúc, mọi nơi</p>
-                </div>
-            </div>
-            
-            <!-- Nút Đăng nhập -->
-            <div id="auth-header-btn">
-                <button onclick="showLoginModal()" class="border border-red-600 text-red-600 hover:bg-red-50 px-5 py-2 rounded text-sm font-semibold transition flex items-center space-x-2">
-                    <span>Đăng nhập</span>
-                </button>
-            </div>
-        </div>
-
-        <!-- MENU NGANG ĐỎ CHUẨN -->
-        <nav class="dvc-nav-bg text-white text-xs md:text-sm px-4 shadow-inner">
-            <div class="max-w-7xl mx-auto flex space-x-6 overflow-x-auto whitespace-nowrap py-2.5">
-                <a href="#" onclick="goHome()" class="hover:text-yellow-300 font-bold flex items-center"><i class="fa-solid fa-house mr-1"></i></a>
-                <a href="#" onclick="alert('Danh mục Thông tin và dịch vụ')" class="hover:text-yellow-300 flex items-center">Thông tin và dịch vụ <i class="fa-solid fa-chevron-down ml-1 text-[10px]"></i></a>
-                <a href="#" onclick="alert('Danh mục Thanh toán trực tuyến')" class="hover:text-yellow-300 flex items-center">Thanh toán trực tuyến <i class="fa-solid fa-chevron-down ml-1 text-[10px]"></i></a>
-                <a href="#" onclick="alert('Danh mục Phản ánh kiến nghị')" class="hover:text-yellow-300 flex items-center">Phản ánh kiến nghị <i class="fa-solid fa-chevron-down ml-1 text-[10px]"></i></a>
-                <a href="#" onclick="alert('Đánh giá chất lượng phục vụ')" class="hover:text-yellow-300 flex items-center">Đánh giá chất lượng phục vụ <i class="fa-solid fa-chevron-down ml-1 text-[10px]"></i></a>
-                <a href="#" onclick="alert('Hệ thống hỗ trợ trực tuyến')" class="hover:text-yellow-300 flex items-center">Hỗ trợ <i class="fa-solid fa-chevron-down ml-1 text-[10px]"></i></a>
-            </div>
-        </nav>
-    </header>
-
-    <!-- NỘI DUNG CHÍNH -->
-    <main class="flex-grow">
-        
-        <!-- MÀN HÌNH TRANG CHỦ -->
-        <div id="screen-home">
-            <!-- HERO BANNER VỚI Ô TÌM KIẾM VÀ 3 NÚT VÀNG -->
-            <div class="hero-banner py-8 px-4 text-white shadow-md relative overflow-hidden">
-                <div class="max-w-5xl mx-auto space-y-6 relative z-10">
-                    <!-- Thanh tìm kiếm thủ tục -->
-                    <div class="bg-white rounded-lg p-2 shadow-lg flex items-center">
-                        <input type="text" id="search-input" placeholder="Nhập từ khoá tìm kiếm thủ tục hành chính (VD: Khai sinh, Hộ tịch...)" class="w-full px-4 py-2.5 text-gray-800 text-sm focus:outline-none">
-                        <button onclick="searchAction()" class="bg-red-700 hover:bg-red-800 text-white px-6 py-2.5 rounded font-semibold text-sm flex items-center space-x-2 whitespace-nowrap">
-                            <i class="fa-solid fa-magnifying-glass"></i>
-                            <span>Tìm kiếm</span>
-                        </button>
-                    </div>
-                    <div class="text-right">
-                        <a href="#" onclick="alert('Chức năng Tìm kiếm nâng cao dành cho học sinh thực hành chuyên sâu.');" class="text-white text-xs hover:underline"><i class="fa-solid fa-sliders mr-1"></i> Tìm kiếm nâng cao</a>
-                    </div>
-
-                    <!-- 3 Nút Vàng Trọng Điểm -->
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
-                        <button onclick="openServiceForm('Dịch vụ công trực tuyến')" class="gold-btn py-4 px-6 rounded-lg font-bold text-sm shadow-md text-center uppercase tracking-wide flex items-center justify-center space-x-2">
-                            <i class="fa-solid fa-file-pen text-base"></i>
-                            <span>Dịch vụ công trực tuyến</span>
-                        </button>
-                        <button onclick="openServiceForm('Thủ tục hành chính của Đảng')" class="gold-btn py-4 px-6 rounded-lg font-bold text-sm shadow-md text-center uppercase tracking-wide flex items-center justify-center space-x-2">
-                            <i class="fa-solid fa-landmark text-base"></i>
-                            <span>Thủ tục hành chính của Đảng</span>
-                        </button>
-                        <button onclick="openServiceForm('Dịch vụ công liên thông')" class="gold-btn py-4 px-6 rounded-lg font-bold text-sm shadow-md text-center uppercase tracking-wide flex items-center justify-center space-x-2">
-                            <i class="fa-solid fa-network-wired text-base"></i>
-                            <span>Dịch vụ công liên thông: Khai sinh, Khai tử</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- THANH THÔNG BÁO / SLIDER NGẮN -->
-            <div class="bg-white border-b py-3 px-4 shadow-sm">
-                <div class="max-w-7xl mx-auto flex items-center space-x-3 text-xs text-gray-700 overflow-x-auto whitespace-nowrap">
-                    <span class="bg-red-100 text-red-700 font-bold px-2 py-1 rounded">THÔNG BÁO</span>
-                    <span class="hover:text-red-600 cursor-pointer" onclick="openServiceForm('Công bố dữ liệu số')"><i class="fa-solid fa-circle-dot text-red-600 mr-1"></i> Công bố dữ liệu, hướng dẫn khai thác, sử dụng dữ liệu số sức khỏe điện tử...</span>
-                    <span class="text-gray-300">|</span>
-                    <span class="hover:text-red-600 cursor-pointer" onclick="openServiceForm('Dữ liệu hộ tịch')"><i class="fa-solid fa-circle-dot text-red-600 mr-1"></i> Công bố dữ liệu hộ tịch và hướng dẫn kết nối tích hợp...</span>
-                </div>
-            </div>
-
-            <!-- HAI KHỐI CÔNG DÂN & DOANH NGHIỆP -->
-            <div class="max-w-7xl mx-auto px-4 py-8">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    
-                    <!-- CỘT CÔNG DÂN -->
-                    <div class="bg-white rounded-xl shadow-md p-6 border-t-4 border-amber-600">
-                        <h2 class="text-center font-bold text-lg text-amber-800 uppercase tracking-wider mb-6 pb-2 border-b">CÔNG DÂN</h2>
-                        <div class="space-y-3">
-                            <div onclick="openServiceForm('Khai sinh')" class="flex items-center justify-between p-3.5 bg-gray-50 hover:bg-amber-50 rounded-lg cursor-pointer transition border border-gray-100">
-                                <div class="flex items-center space-x-3 text-gray-800 font-medium text-sm">
-                                    <div class="w-8 h-8 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center"><i class="fa-solid fa-baby"></i></div>
-                                    <span>Khai sinh</span>
-                                </div>
-                                <i class="fa-solid fa-chevron-right text-xs text-gray-400"></i>
-                            </div>
-
-                            <div onclick="openServiceForm('Học tập')" class="flex items-center justify-between p-3.5 bg-gray-50 hover:bg-amber-50 rounded-lg cursor-pointer transition border border-gray-100">
-                                <div class="flex items-center space-x-3 text-gray-800 font-medium text-sm">
-                                    <div class="w-8 h-8 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center"><i class="fa-solid fa-graduation-cap"></i></div>
-                                    <span>Học tập</span>
-                                </div>
-                                <i class="fa-solid fa-chevron-right text-xs text-gray-400"></i>
-                            </div>
-
-                            <div onclick="openServiceForm('Cấp giấy tờ')" class="flex items-center justify-between p-3.5 bg-gray-50 hover:bg-amber-50 rounded-lg cursor-pointer transition border border-gray-100">
-                                <div class="flex items-center space-x-3 text-gray-800 font-medium text-sm">
-                                    <div class="w-8 h-8 rounded-full bg-green-100 text-green-700 flex items-center justify-center"><i class="fa-solid fa-file-lines"></i></div>
-                                    <span>Cấp giấy tờ</span>
-                                </div>
-                                <i class="fa-solid fa-chevron-right text-xs text-gray-400"></i>
-                            </div>
-
-                            <div onclick="openServiceForm('Cư trú và giấy tờ tùy thân')" class="flex items-center justify-between p-3.5 bg-gray-50 hover:bg-amber-50 rounded-lg cursor-pointer transition border border-gray-100">
-                                <div class="flex items-center space-x-3 text-gray-800 font-medium text-sm">
-                                    <div class="w-8 h-8 rounded-full bg-purple-100 text-purple-700 flex items-center justify-center"><i class="fa-solid fa-id-card"></i></div>
-                                    <span>Cư trú và giấy tờ tùy thân</span>
-                                </div>
-                                <i class="fa-solid fa-chevron-right text-xs text-gray-400"></i>
-                            </div>
-
-                            <div onclick="openServiceForm('Hôn nhân và gia đình')" class="flex items-center justify-between p-3.5 bg-gray-50 hover:bg-amber-50 rounded-lg cursor-pointer transition border border-gray-100">
-                                <div class="flex items-center space-x-3 text-gray-800 font-medium text-sm">
-                                    <div class="w-8 h-8 rounded-full bg-red-100 text-red-700 flex items-center justify-center"><i class="fa-solid fa-ring"></i></div>
-                                    <span>Hôn nhân và gia đình</span>
-                                </div>
-                                <i class="fa-solid fa-chevron-right text-xs text-gray-400"></i>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- CỘT DOANH NGHIỆP -->
-                    <div class="bg-white rounded-xl shadow-md p-6 border-t-4 border-blue-800">
-                        <h2 class="text-center font-bold text-lg text-blue-900 uppercase tracking-wider mb-6 pb-2 border-b">DOANH NGHIỆP</h2>
-                        <div class="space-y-3">
-                            <div onclick="openServiceForm('Khởi sự kinh doanh')" class="flex items-center justify-between p-3.5 bg-gray-50 hover:bg-blue-50 rounded-lg cursor-pointer transition border border-gray-100">
-                                <div class="flex items-center space-x-3 text-gray-800 font-medium text-sm">
-                                    <div class="w-8 h-8 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center"><i class="fa-solid fa-rocket"></i></div>
-                                    <span>Khởi sự kinh doanh</span>
-                                </div>
-                                <i class="fa-solid fa-chevron-right text-xs text-gray-400"></i>
-                            </div>
-
-                            <div onclick="openServiceForm('Lao động và bảo hiểm xã hội')" class="flex items-center justify-between p-3.5 bg-gray-50 hover:bg-blue-50 rounded-lg cursor-pointer transition border border-gray-100">
-                                <div class="flex items-center space-x-3 text-gray-800 font-medium text-sm">
-                                    <div class="w-8 h-8 rounded-full bg-green-100 text-green-700 flex items-center justify-center"><i class="fa-solid fa-users-gear"></i></div>
-                                    <span>Lao động và bảo hiểm xã hội</span>
-                                </div>
-                                <i class="fa-solid fa-chevron-right text-xs text-gray-400"></i>
-                            </div>
-
-                            <div onclick="openServiceForm('Tài chính doanh nghiệp')" class="flex items-center justify-between p-3.5 bg-gray-50 hover:bg-blue-50 rounded-lg cursor-pointer transition border border-gray-100">
-                                <div class="flex items-center space-x-3 text-gray-800 font-medium text-sm">
-                                    <div class="w-8 h-8 rounded-full bg-yellow-100 text-yellow-700 flex items-center justify-center"><i class="fa-solid fa-wallet"></i></div>
-                                    <span>Tài chính doanh nghiệp</span>
-                                </div>
-                                <i class="fa-solid fa-chevron-right text-xs text-gray-400"></i>
-                            </div>
-
-                            <div onclick="openServiceForm('Điện lực, đất đai, xây dựng')" class="flex items-center justify-between p-3.5 bg-gray-50 hover:bg-blue-50 rounded-lg cursor-pointer transition border border-gray-100">
-                                <div class="flex items-center space-x-3 text-gray-800 font-medium text-sm">
-                                    <div class="w-8 h-8 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center"><i class="fa-solid fa-building"></i></div>
-                                    <span>Điện lực, đất đai, xây dựng</span>
-                                </div>
-                                <i class="fa-solid fa-chevron-right text-xs text-gray-400"></i>
-                            </div>
-
-                            <div onclick="openServiceForm('Thương mại, quảng cáo')" class="flex items-center justify-between p-3.5 bg-gray-50 hover:bg-blue-50 rounded-lg cursor-pointer transition border border-gray-100">
-                                <div class="flex items-center space-x-3 text-gray-800 font-medium text-sm">
-                                    <div class="w-8 h-8 rounded-full bg-red-100 text-red-700 flex items-center justify-center"><i class="fa-solid fa-store"></i></div>
-                                    <span>Thương mại, quảng cáo</span>
-                                </div>
-                                <i class="fa-solid fa-chevron-right text-xs text-gray-400"></i>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-        <!-- MÀN HÌNH 2: MODAL ĐĂNG NHẬP VNEID GIỐNG THẬT -->
-        <div id="modal-login" class="hidden fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4">
-            <div class="bg-white rounded-xl shadow-2xl max-w-md w-full overflow-hidden border border-gray-200">
-                <div class="bg-blue-900 text-white p-4 flex justify-between items-center">
-                    <div class="flex items-center space-x-2">
-                        <i class="fa-solid fa-shield-halved text-yellow-400 text-xl"></i>
-                        <span class="font-bold text-sm">Xác thực Định danh Điện tử VNeID</span>
-                    </div>
-                    <button onclick="closeLoginModal()" class="text-white hover:text-gray-200 text-lg font-bold">&times;</button>
-                </div>
-                <div class="p-6 space-y-4">
-                    <p class="text-xs text-gray-500 text-center">Hệ thống định danh và xác thực điện tử quốc gia phục vụ dịch vụ công trực tuyến.</p>
-                    <div class="space-y-3">
-                        <div>
-                            <label class="block text-xs font-semibold text-gray-700">Số định danh cá nhân / CCCD</label>
-                            <input type="text" id="vneid-id" value="038210001234" class="mt-1 w-full border rounded p-2 text-sm bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-semibold text-gray-700">Mật khẩu VNeID</label>
-                            <input type="password" value="********" class="mt-1 w-full border rounded p-2 text-sm bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                        </div>
-                    </div>
-                    <button onclick="confirmLogin()" class="w-full bg-blue-900 hover:bg-blue-800 text-white font-bold py-2.5 rounded text-sm transition shadow">
-                        Xác nhận Đăng nhập
-                    </button>
-                    <div class="text-center">
-                        <button onclick="closeLoginModal()" class="text-xs text-blue-600 hover:underline">Hủy bỏ</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- MÀN HÌNH 3: TỜ KHAI NỘP HỒ SƠ THỰC HÀNH -->
-        <div id="screen-form" class="hidden max-w-4xl mx-auto px-4 py-8">
-            <div class="bg-white rounded-xl shadow-md border overflow-hidden">
-                <div class="bg-red-800 text-white px-6 py-4 flex justify-between items-center">
-                    <h3 id="form-title-text" class="font-bold text-base uppercase"><i class="fa-solid fa-file-contract mr-2"></i> Tờ khai trực tuyến</h3>
-                    <button onclick="goHome()" class="text-xs bg-white/20 hover:bg-white/30 px-3 py-1 rounded">Quay lại</button>
-                </div>
-                <form onsubmit="submitFormSuccess(event)" class="p-6 space-y-6">
-                    <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 text-xs text-yellow-800">
-                        <strong>Hướng dẫn thực hành:</strong> Học sinh điền đầy đủ các thông tin bên dưới để tiến hành nộp hồ sơ mô phỏng.
-                    </div>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                            <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Họ và tên người yêu cầu <span class="text-red-500">*</span></label>
-                            <input type="text" required class="w-full border rounded p-2.5 text-sm focus:ring-2 focus:ring-red-500 focus:outline-none" placeholder="VD: NGUYỄN VĂN A">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Số CCCD / Định danh cá nhân <span class="text-red-500">*</span></label>
-                            <input type="text" required class="w-full border rounded p-2.5 text-sm focus:ring-2 focus:ring-red-500 focus:outline-none" placeholder="Nhập 12 chữ số định danh">
-                        </div>
-                    </div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                            <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Số điện thoại liên hệ <span class="text-red-500">*</span></label>
-                            <input type="tel" required class="w-full border rounded p-2.5 text-sm focus:ring-2 focus:ring-red-500 focus:outline-none" placeholder="VD: 0912345678">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Cơ quan tiếp nhận giải quyết <span class="text-red-500">*</span></label>
-                            <select class="w-full border rounded p-2.5 text-sm bg-white focus:ring-2 focus:ring-red-500 focus:outline-none">
-                                <option>UBND Xã/Phường nơi cư trú</option>
-                                <option>UBND Quận/Huyện/Thị xã</option>
-                                <option>Bộ phận Một cửa cấp Tỉnh</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div>
-                        <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Nội dung và lý do yêu cầu <span class="text-red-500">*</span></label>
-                        <textarea rows="3" required class="w-full border rounded p-2.5 text-sm focus:ring-2 focus:ring-red-500 focus:outline-none" placeholder="Ghi rõ chi tiết nội dung đề nghị..."></textarea>
-                    </div>
-
-                    <div class="border-t pt-4 flex justify-end space-x-3">
-                        <button type="button" onclick="goHome()" class="px-5 py-2 border rounded text-xs font-semibold text-gray-600 hover:bg-gray-100">Hủy bỏ</button>
-                        <button type="submit" class="px-6 py-2 bg-red-700 text-white rounded text-xs font-bold hover:bg-red-800 shadow">Nộp hồ sơ trực tuyến</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-
-        <!-- MÀN HÌNH 4: KẾT QUẢ THÀNH CÔNG -->
-        <div id="screen-success" class="hidden max-w-xl mx-auto px-4 py-12">
-            <div class="bg-white rounded-xl shadow-md border border-green-200 p-8 text-center space-y-6">
-                <div class="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto text-3xl">
-                    <i class="fa-solid fa-check"></i>
-                </div>
-                <div class="space-y-2">
-                    <h3 class="text-xl font-bold text-green-700">Nộp hồ sơ trực tuyến thành công!</h3>
-                    <p class="text-xs text-gray-600">Hệ thống dịch vụ công quốc gia mô phỏng đã tiếp nhận hồ sơ.</p>
-                </div>
-                <div class="bg-gray-50 border border-dashed border-gray-300 p-4 rounded-lg space-y-1">
-                    <span class="text-xs text-gray-500 uppercase font-semibold">Mã hồ sơ của học sinh:</span>
-                    <div id="display-receipt-code" class="text-xl font-extrabold text-red-600 tracking-wider"></div>
-                </div>
-                <p class="text-[11px] text-gray-500 italic">Yêu cầu học sinh chụp lại màn hình hoặc ghi lại mã hồ sơ này nộp báo cáo cho giáo viên.</p>
-                <div>
-                    <button onclick="goHome()" class="px-6 py-2.5 bg-blue-900 text-white text-xs font-bold rounded hover:bg-blue-800 shadow">Về trang chủ</button>
-                </div>
-            </div>
-        </div>
-
-    </main>
-
-    <!-- FOOTER CHUẨN MÔ PHỎNG GIÁO DỤC -->
-    <footer class="bg-gray-900 text-gray-400 text-xs py-6 border-t border-gray-800 mt-12">
-        <div class="max-w-7xl mx-auto px-4 text-center space-y-2">
-            <p class="font-bold text-gray-200 uppercase">CỔNG DỊCH VỤ CÔNG QUỐC GIA - HỆ THỐNG MÔ PHỎNG PHỤC VỤ GIÁO DỤC VÀ ĐÀO TẠO</p>
-            <p>Hệ thống phục vụ công tác giảng dạy thực hành môn Tin học cấp Trung học cơ sở. Dữ liệu là giả định.</p>
-        </div>
-    </footer>
-
-    <!-- JAVASCRIPT XỬ LÝ TƯƠNG TÁC -->
-    <script>
-        let isUserLoggedIn = false;
-        let pendingServiceName = "";
-
-        function hideAllScreens() {
-            document.getElementById('screen-home').classList.add('hidden');
-            document.getElementById('screen-form').classList.add('hidden');
-            document.getElementById('screen-success').classList.add('hidden');
-        }
-
-        function goHome() {
-            hideAllScreens();
-            document.getElementById('screen-home').classList.remove('hidden');
-            window.scrollTo(0, 0);
-        }
-
-        function showLoginModal() {
-            document.getElementById('modal-login').classList.remove('hidden');
-        }
-
-        function closeLoginModal() {
-            document.getElementById('modal-login').classList.add('hidden');
-        }
-
-        function confirmLogin() {
-            isUserLoggedIn = true;
-            closeLoginModal();
-            // Đổi nút đăng nhập thành trạng thái đã định danh
-            document.getElementById('auth-header-btn').innerHTML = `
-                <div class="flex items-center space-x-2 bg-red-50 border border-red-200 px-3 py-1.5 rounded text-xs">
-                    <i class="fa-solid fa-user-check text-red-700"></i>
-                    <span class="font-bold text-red-800">Công dân (Đã định danh VNeID)</span>
-                </div>
-            `;
-            alert('Xác thực tài khoản VNeID thành công!');
-            if(pendingServiceName) {
-                proceedToForm(pendingServiceName);
-            }
-        }
-
-        function openServiceForm(serviceName) {
-            pendingServiceName = serviceName;
-            if(!isUserLoggedIn) {
-                alert('Vui lòng đăng nhập bằng tài khoản VNeID mô phỏng trước khi thực hiện nộp thủ tục này!');
-                showLoginModal();
-                return;
-            }
-            proceedToForm(serviceName);
-        }
-
-        function proceedToForm(serviceName) {
-            hideAllScreens();
-            document.getElementById('form-title-text').innerHTML = `<i class="fa-solid fa-file-contract mr-2"></i> TỜ KHAI TRỰC TUYẾN: ${serviceName.toUpperCase()}`;
-            document.getElementById('screen-form').classList.remove('hidden');
-            window.scrollTo(0, 0);
-        }
-
-        function submitFormSuccess(e) {
-            e.preventDefault();
-            hideAllScreens();
-            const randomCode = 'DVC-' + Math.floor(Math.random() * 899999 + 100000);
-            document.getElementById('display-receipt-code').innerText = randomCode;
-            document.getElementById('screen-success').classList.remove('hidden');
-            window.scrollTo(0, 0);
-        }
-
-        function searchAction() {
-            const keyword = document.getElementById('search-input').value.trim();
-            if(!keyword) {
-                alert('Vui lòng nhập từ khóa thủ tục hành chính cần tìm.');
-                return;
-            }
-            alert('Kết quả tìm kiếm cho từ khóa: "' + keyword + '" có 3 thủ tục trực tuyến phù hợp. Vui lòng bấm vào danh mục Công dân bên dưới để nộp hồ sơ.');
-        }
-    </script>
+<body>
+<div class="topline"></div>
+<div class="browser-note">▦　Ứng dụng　　✉ Gmail　▶ YouTube　　Maps　　Tra cứu thủ tục hành chính　　Cổng Dịch vụ công</div>
+<header>
+ <div class="brand">
+  <div class="emblem" aria-label="Biểu trưng">★</div>
+  <div><div class="brand-title">CỔNG DỊCH VỤ CÔNG QUỐC GIA</div><div class="tagline">Kết nối, cung cấp thông tin và dịch vụ công mọi lúc, mọi nơi</div></div>
+  <button class="login" id="loginBtn">Đăng nhập</button>
+ </div>
+</header>
+<nav><div class="navinner">
+ <button class="home" title="Trang chủ" data-action="home">⌂</button>
+ <div class="navitem"><button>Thông tin và dịch vụ⌄</button><div class="dropdown"><button data-search="Thủ tục hành chính">Thủ tục hành chính</button><button data-search="Dịch vụ công trực tuyến">Dịch vụ công trực tuyến</button><button data-search="Tra cứu hồ sơ">Tra cứu hồ sơ</button></div></div>
+ <div class="navitem"><button data-search="Thanh toán trực tuyến">Thanh toán trực tuyến</button></div>
+ <div class="navitem"><button>Phản ánh kiến nghị⌄</button><div class="dropdown"><button data-modal="feedback">Gửi phản ánh, kiến nghị</button><button data-search="Tra cứu phản ánh">Tra cứu phản ánh</button></div></div>
+ <div class="navitem"><button data-search="Đánh giá chất lượng phục vụ">Đánh giá chất lượng phục vụ</button></div>
+ <div class="navitem"><button>Hỗ trợ⌄</button><div class="dropdown"><button data-modal="support">Hướng dẫn sử dụng</button><button data-modal="support">Liên hệ hỗ trợ</button></div></div>
+</div></nav>
+<section class="hero"><div class="hero-inner">
+ <div class="searchrow"><input id="searchInput" placeholder="Nhập từ khóa tìm kiếm thủ tục hành chính" aria-label="Từ khóa tìm kiếm"><button class="advanced" id="advancedBtn">Tìm kiếm nâng cao</button><button class="searchbtn" id="searchBtn" aria-label="Tìm kiếm">⌕</button></div>
+ <div class="quicklinks"><button data-search="Dịch vụ công trực tuyến">Dịch vụ công trực tuyến</button><button data-search="Thủ tục hành chính của Đảng">Thủ tục hành chính của Đảng</button><button data-search="Khai sinh, khai tử">Dịch vụ công liên thông: Khai sinh,<br>Khai tử</button></div>
+</div></section>
+<section class="announcement"><div class="lotus"></div><div class="ann-inner"><button class="arrow" id="prevNews" aria-label="Tin trước">‹</button><div class="newslist" id="newsList"></div><button class="arrow" id="nextNews" aria-label="Tin tiếp">›</button></div></section>
+<main>
+ <div class="results" id="results" aria-live="polite"><h3 id="resultTitle">Kết quả tìm kiếm</h3><div id="resultBody"></div></div>
+ <div class="columns">
+  <section><h2 class="section-title">CÔNG DÂN</h2><div id="citizen"></div></section>
+  <section class="business"><h2 class="section-title">DOANH NGHIỆP</h2><div id="enterprise"></div></section>
+ </div>
+</main>
+<footer class="footer">CỔNG DỊCH VỤ CÔNG QUỐC GIA · Giao diện minh họa có thể tương tác, không phải cổng dịch vụ công chính thức.</footer>
+<div class="modal-backdrop" id="modalBackdrop"><div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><button class="close" id="closeModal" aria-label="Đóng">×</button><h2 id="modalTitle">Đăng nhập</h2><p id="modalDesc">Đăng nhập để sử dụng các dịch vụ trực tuyến.</p><div id="modalFields"></div><button class="primary" id="modalSubmit">Tiếp tục</button><div class="message" id="modalMessage"></div></div></div>
+<script>
+const citizenServices=[
+ ['👶','Có con nhỏ',['Đăng ký khai sinh','Đăng ký khai sinh liên thông','Cấp thẻ bảo hiểm y tế cho trẻ dưới 6 tuổi']],
+ ['♧','Học tập',['Tra cứu thông tin tuyển sinh','Thủ tục giáo dục và đào tạo','Tra cứu văn bằng, chứng chỉ']],
+ ['▣','Việc làm',['Thông tin việc làm','Hỗ trợ người lao động','Đăng ký dịch vụ việc làm']],
+ ['▧','Cư trú và giấy tờ tùy thân',['Đăng ký thường trú','Đăng ký tạm trú','Cấp, đổi thẻ căn cước']],
+ ['⌂','Hôn nhân và gia đình',['Đăng ký kết hôn','Đăng ký khai tử','Trích lục hộ tịch']],
+ ['⌑','Điện lực, nhà ở, đất đai',['Thủ tục đất đai','Cấp phép xây dựng','Dịch vụ điện lực']],
+ ['♡','Sức khỏe',['Bảo hiểm y tế','Tra cứu cơ sở khám chữa bệnh','Thủ tục y tế']],
+ ['▤','Giao thông và phương tiện',['Đổi giấy phép lái xe','Đăng ký phương tiện','Tra cứu vi phạm giao thông']],
+ ['♧','Thuế và nghĩa vụ tài chính',['Tra cứu nghĩa vụ thuế','Nộp thuế trực tuyến','Lệ phí trước bạ']]
+];
+const enterpriseServices=[
+ ['🚀','Khởi sự kinh doanh',['Đăng ký thành lập doanh nghiệp','Đăng ký hộ kinh doanh','Tra cứu đăng ký kinh doanh']],
+ ['♧','Lao động và bảo hiểm xã hội',['Đăng ký tham gia BHXH','Báo tăng, giảm lao động','Giải quyết chế độ bảo hiểm']],
+ ['ⓢ','Tài chính doanh nghiệp',['Kê khai thuế','Nộp thuế điện tử','Hoàn thuế']],
+ ['▥','Điện lực, đất đai, xây dựng',['Thủ tục đất đai','Cấp giấy phép xây dựng','Đấu nối điện']],
+ ['▣','Thương mại, quảng cáo',['Đăng ký hoạt động thương mại','Cấp phép quảng cáo','Thông báo khuyến mại']],
+ ['♙','Sở hữu trí tuệ, đăng ký tài sản',['Đăng ký nhãn hiệu','Đăng ký quyền tác giả','Tra cứu sở hữu trí tuệ']],
+ ['▤','Môi trường và công nghiệp',['Giấy phép môi trường','Thủ tục công nghiệp','Báo cáo môi trường']]
+];
+function renderServices(target,items){document.getElementById(target).innerHTML=items.map((s,i)=>`<button class="service" aria-expanded="false"><span class="ico">${s[0]}</span><span>${s[1]}</span></button><div class="service-detail">${s[2].map(x=>`<a href="#" data-search="${x}">${x} →</a>`).join('')}</div>`).join('')}
+renderServices('citizen',citizenServices);renderServices('enterprise',enterpriseServices);
+const news=[
+ ['Công bố dữ liệu, hướng dẫn khai thác, sử dụng dữ liệu số sức khỏe...','Công bố dữ liệu, hướng dẫn khai thác, sử dụng dữ liệu số sức khỏe điện tử tích hợp trên VNeID...'],
+ ['Công bố dữ liệu và hướng dẫn kết nối, khai thác sử dụng dữ liệu đăng...','Công bố dữ liệu và hướng dẫn kết nối, khai thác sử dụng dữ liệu đăng ký doanh nghiệp, hợp tác xã...'],
+ ['Công bố dữ liệu hộ tịch và hướng dẫn kết nối, khai thác sử dụng dữ...','Việc công bố dữ liệu hộ tịch và hướng dẫn kết nối, khai thác sử dụng dữ liệu hộ tịch...'],
+ ['Hướng dẫn thực hiện dịch vụ công trực tuyến','Các bước nộp hồ sơ trực tuyến và theo dõi kết quả giải quyết hồ sơ.'],
+ ['Cập nhật thông tin thủ tục hành chính','Thông tin hướng dẫn và các lưu ý khi thực hiện thủ tục hành chính.']
+];let newsOffset=0;
+function drawNews(){const list=document.getElementById('newsList');list.innerHTML='';for(let i=0;i<3;i++){const n=news[(newsOffset+i)%news.length];const el=document.createElement('div');el.className='news';el.tabIndex=0;el.innerHTML=`<strong>${n[0]}</strong><p>${n[1]}</p>`;el.onclick=()=>showResults(n[0]);list.appendChild(el)}}
+drawNews();document.getElementById('prevNews').onclick=()=>{newsOffset=(newsOffset+news.length-1)%news.length;drawNews()};document.getElementById('nextNews').onclick=()=>{newsOffset=(newsOffset+1)%news.length;drawNews()};
+document.querySelectorAll('.navitem>button').forEach(b=>b.addEventListener('click',()=>{const parent=b.parentElement;if(parent.querySelector('.dropdown')){document.querySelectorAll('.navitem.open').forEach(n=>{if(n!==parent)n.classList.remove('open')});parent.classList.toggle('open')}else if(b.dataset.search)showResults(b.dataset.search)}));
+document.addEventListener('click',e=>{const service=e.target.closest('.service');if(service){const was=service.classList.contains('active');document.querySelectorAll('.service.active').forEach(s=>{s.classList.remove('active');s.setAttribute('aria-expanded','false')});if(!was){service.classList.add('active');service.setAttribute('aria-expanded','true')}return}const searchLink=e.target.closest('[data-search]');if(searchLink){e.preventDefault();showResults(searchLink.dataset.search);document.querySelectorAll('.navitem.open').forEach(n=>n.classList.remove('open'))}if(e.target.dataset.modal)openModal(e.target.dataset.modal)});
+function showResults(query){query=(query||'').trim();if(!query)query='Tất cả dịch vụ';document.getElementById('searchInput').value=query;document.getElementById('resultTitle').textContent='Kết quả cho: “'+query+'”';const all=[...citizenServices,...enterpriseServices].flatMap(s=>s[2].map(x=>({name:x,group:s[1]}))).filter(x=>(x.name+' '+x.group).toLocaleLowerCase('vi').includes(query.toLocaleLowerCase('vi')));const exact=all.length?all:[{name:'Tra cứu thủ tục: '+query,group:'Dịch vụ công trực tuyến'},{name:'Hướng dẫn thực hiện và chuẩn bị hồ sơ',group:'Thông tin và dịch vụ'}];document.getElementById('resultBody').innerHTML=exact.slice(0,12).map(x=>`<div class="result-item"><div><strong>${x.name}</strong><div style="color:#7b8993;font-size:12px;margin-top:5px">${x.group}</div></div><button data-open-service="${x.name}">Xem hướng dẫn</button></div>`).join('');document.getElementById('results').style.display='block';document.getElementById('results').scrollIntoView({behavior:'smooth',block:'nearest'})}
+document.getElementById('searchBtn').onclick=()=>showResults(document.getElementById('searchInput').value);document.getElementById('searchInput').addEventListener('keydown',e=>{if(e.key==='Enter')showResults(e.target.value)});document.getElementById('advancedBtn').onclick=()=>openModal('advanced');
+document.querySelector('.home').onclick=()=>{document.getElementById('results').style.display='none';document.getElementById('searchInput').value='';document.querySelectorAll('.service.active').forEach(s=>s.classList.remove('active'));window.scrollTo({top:0,behavior:'smooth'})};
+document.addEventListener('click',e=>{const b=e.target.closest('[data-open-service]');if(b){openModal('service');document.getElementById('modalTitle').textContent=b.dataset.openService;document.getElementById('modalDesc').textContent='Đây là giao diện minh họa. Trên cổng thật, bạn cần đăng nhập và chọn cơ quan tiếp nhận để nộp hồ sơ.';document.getElementById('modalFields').innerHTML='<p>Thông tin cần chuẩn bị, thành phần hồ sơ và thời hạn giải quyết sẽ được hiển thị tại trang chi tiết thủ tục.</p>';document.getElementById('modalSubmit').textContent='Đã hiểu'}})
+const backdrop=document.getElementById('modalBackdrop');function openModal(type){backdrop.classList.add('show');document.getElementById('modalMessage').textContent='';const title=document.getElementById('modalTitle'),desc=document.getElementById('modalDesc'),fields=document.getElementById('modalFields'),submit=document.getElementById('modalSubmit');submit.textContent='Tiếp tục';
+if(type==='advanced'){title.textContent='Tìm kiếm nâng cao';desc.textContent='Lọc thủ tục theo lĩnh vực và cơ quan thực hiện.';fields.innerHTML='<label class="field">Từ khóa<input id="advKeyword" placeholder="Nhập tên thủ tục"></label><label class="field">Lĩnh vực<select id="advField" style="width:100%;padding:10px;margin-top:6px;border:1px solid #cfd7dc;border-radius:4px"><option>Tất cả lĩnh vực</option><option>Hộ tịch</option><option>Đất đai</option><option>Giáo dục</option><option>Thuế</option><option>Doanh nghiệp</option></select></label><label class="field">Cơ quan thực hiện<input id="advAgency" placeholder="Tên cơ quan (không bắt buộc)"></label>';submit.onclick=()=>{const q=document.getElementById('advKeyword').value||document.getElementById('advField').value;backdrop.classList.remove('show');showResults(q)}}
+else if(type==='feedback'){title.textContent='Phản ánh, kiến nghị';desc.textContent='Nhập nội dung để tạo bản phản ánh minh họa.';fields.innerHTML='<label class="field">Tiêu đề<input id="fbTitle" placeholder="Tiêu đề phản ánh"></label><label class="field">Nội dung<textarea id="fbContent" style="width:100%;height:85px;padding:10px;border:1px solid #cfd7dc;border-radius:4px;margin-top:6px" placeholder="Mô tả nội dung"></textarea></label>';submit.onclick=()=>{document.getElementById('modalMessage').textContent='Đã ghi nhận nội dung trên giao diện minh họa; chưa gửi đến cơ quan nhà nước.'}}
+else if(type==='support'){title.textContent='Hỗ trợ sử dụng';desc.textContent='Bạn có thể tìm thủ tục bằng ô tìm kiếm hoặc mở nhóm dịch vụ ở trang chủ.';fields.innerHTML='<p>1. Nhập tên thủ tục vào ô tìm kiếm.<br>2. Chọn kết quả để xem hướng dẫn.<br>3. Với cổng thật, đăng nhập bằng phương thức được hỗ trợ để nộp hồ sơ.</p>';submit.onclick=()=>backdrop.classList.remove('show')}
+else if(type==='service'){title.textContent='Chi tiết thủ tục';desc.textContent='Thông tin hướng dẫn';fields.innerHTML='<p>Đây là giao diện minh họa, không kết nối cơ sở dữ liệu dịch vụ công.</p>';submit.onclick=()=>backdrop.classList.remove('show')}
+else{title.textContent='Đăng nhập';desc.textContent='Đăng nhập để sử dụng các dịch vụ trực tuyến.';fields.innerHTML='<label class="field">Tài khoản / số định danh<input id="username" autocomplete="username" placeholder="Nhập tài khoản hoặc số định danh"></label><label class="field">Mật khẩu<input id="password" type="password" autocomplete="current-password" placeholder="Nhập mật khẩu"></label>';submit.onclick=()=>{const u=document.getElementById('username').value,p=document.getElementById('password').value;document.getElementById('modalMessage').textContent=u&&p?'Đây là bản demo: chưa xác thực tài khoản hoặc gửi dữ liệu đi.':'Vui lòng nhập đầy đủ tài khoản và mật khẩu.'}}
+}
+document.getElementById('loginBtn').onclick=()=>openModal('login');document.getElementById('closeModal').onclick=()=>backdrop.classList.remove('show');backdrop.addEventListener('click',e=>{if(e.target===backdrop)backdrop.classList.remove('show')});document.addEventListener('keydown',e=>{if(e.key==='Escape')backdrop.classList.remove('show')});
+</script>
 </body>
 </html>
