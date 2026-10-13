@@ -4,242 +4,321 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cổng Dịch vụ công Quốc gia (Hệ thống Mô phỏng Giáo dục)</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://tailwindcss.com/"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        .header-red { background: linear-gradient(135deg, #b31412 0%, #da251d 100%); }
-        .gold-text { color: #ffd700; }
-        .vneid-bg { background-color: #004b87; }
+        .dvc-header-bg { background-color: #ffffff; }
+        .dvc-title-red { color: #8B0000; }
+        .dvc-nav-bg { background: #8B0000; }
+        .hero-banner { 
+            background: linear-gradient(135deg, #d35400 0%, #c0392b 100%);
+            position: relative;
+        }
+        .gold-btn { background-color: #ffc107; color: #333; transition: all 0.2s; }
+        .gold-btn:hover { background-color: #ffb300; }
     </style>
 </head>
 <body class="bg-gray-100 font-sans min-h-screen flex flex-col justify-between">
 
-    <!-- Top Info Bar -->
-    <div class="bg-gray-800 text-gray-300 text-xs py-1.5 px-4">
-        <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <div class="flex items-center space-x-4">
-                <span><i class="fa-solid fa-building-columns mr-1 text-yellow-400"></i> VĂN PHÒNG CHÍNH PHỦ</span>
-                <span class="hidden md:inline">|</span>
-                <span class="hidden md:inline"><i class="fa-solid fa-phone-volume mr-1 text-yellow-400"></i> Tổng đài hỗ trợ: 1900 0368</span>
-            </div>
-            <div id="top-auth-status" class="flex items-center space-x-3">
-                <span class="text-yellow-300 font-medium"><i class="fa-solid fa-shield-halved mr-1"></i> Môi trường giáo dục & Đào tạo</span>
-            </div>
-        </div>
-    </div>
-
-    <!-- Main Header -->
-    <header class="header-red text-white shadow-lg sticky top-0 z-50">
+    <!-- HEADER CHÍNH GIỐNG THẬT -->
+    <header class="dvc-header-bg shadow-sm sticky top-0 z-50 border-b border-gray-200">
         <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+            <!-- Logo & Title -->
             <div class="flex items-center space-x-3 cursor-pointer" onclick="goHome()">
                 <img src="https://dichvucong.gov.vn/p/home/dvc-home-assets/images/quochuy.png" alt="Quốc Huy" class="h-12 w-12 object-contain">
                 <div>
-                    <h1 class="gold-text font-extrabold text-sm md:text-lg uppercase tracking-wide leading-tight">Cổng Dịch Vụ Công Quốc Gia</h1>
-                    <p class="text-[11px] text-gray-200 uppercase tracking-wider">Hệ thống mô phỏng thực hành trực tuyến</p>
+                    <h1 class="dvc-title-red font-bold text-lg md:text-xl uppercase tracking-wide leading-tight" style="font-family: serif;">CỔNG DỊCH VỤ CÔNG QUỐC GIA</h1>
+                    <p class="text-[11px] text-gray-600 font-medium">Kết nối, cung cấp thông tin và dịch vụ công mọi lúc, mọi nơi</p>
                 </div>
             </div>
             
-            <div class="flex items-center space-x-3">
-                <div id="user-display-area">
-                    <button onclick="showLoginModal()" class="bg-amber-500 hover:bg-amber-600 text-gray-900 px-4 py-2 rounded font-bold text-sm shadow transition flex items-center space-x-2">
-                        <i class="fa-solid fa-user-circle"></i>
-                        <span>Đăng nhập</span>
-                    </button>
-                </div>
+            <!-- Nút Đăng nhập -->
+            <div id="auth-header-btn">
+                <button onclick="showLoginModal()" class="border border-red-600 text-red-600 hover:bg-red-50 px-5 py-2 rounded text-sm font-semibold transition flex items-center space-x-2">
+                    <span>Đăng nhập</span>
+                </button>
             </div>
         </div>
-        
-        <!-- Sub Nav Bar -->
-        <nav class="bg-red-900 text-xs md:text-sm px-4 py-2 border-t border-red-800">
-            <div class="max-w-7xl mx-auto flex space-x-6 overflow-x-auto whitespace-nowrap">
-                <a href="#" onclick="goHome()" class="hover:text-yellow-300 font-semibold flex items-center"><i class="fa-solid fa-house mr-1.5"></i> Trang chủ</a>
-                <a href="#" onclick="alert('Tính năng tra cứu thủ tục đã sẵn sàng trong bài thực hành.');" class="hover:text-yellow-300 flex items-center"><i class="fa-solid fa-file-lines mr-1.5"></i> Thủ tục hành chính</a>
-                <a href="#" onclick="alert('Hệ thống dịch vụ công tích hợp cho học sinh lớp 9.');" class="hover:text-yellow-300 flex items-center"><i class="fa-solid fa-circle-question mr-1.5"></i> Hướng dẫn sử dụng</a>
+
+        <!-- MENU NGANG ĐỎ CHUẨN -->
+        <nav class="dvc-nav-bg text-white text-xs md:text-sm px-4 shadow-inner">
+            <div class="max-w-7xl mx-auto flex space-x-6 overflow-x-auto whitespace-nowrap py-2.5">
+                <a href="#" onclick="goHome()" class="hover:text-yellow-300 font-bold flex items-center"><i class="fa-solid fa-house mr-1"></i></a>
+                <a href="#" onclick="alert('Danh mục Thông tin và dịch vụ')" class="hover:text-yellow-300 flex items-center">Thông tin và dịch vụ <i class="fa-solid fa-chevron-down ml-1 text-[10px]"></i></a>
+                <a href="#" onclick="alert('Danh mục Thanh toán trực tuyến')" class="hover:text-yellow-300 flex items-center">Thanh toán trực tuyến <i class="fa-solid fa-chevron-down ml-1 text-[10px]"></i></a>
+                <a href="#" onclick="alert('Danh mục Phản ánh kiến nghị')" class="hover:text-yellow-300 flex items-center">Phản ánh kiến nghị <i class="fa-solid fa-chevron-down ml-1 text-[10px]"></i></a>
+                <a href="#" onclick="alert('Đánh giá chất lượng phục vụ')" class="hover:text-yellow-300 flex items-center">Đánh giá chất lượng phục vụ <i class="fa-solid fa-chevron-down ml-1 text-[10px]"></i></a>
+                <a href="#" onclick="alert('Hệ thống hỗ trợ trực tuyến')" class="hover:text-yellow-300 flex items-center">Hỗ trợ <i class="fa-solid fa-chevron-down ml-1 text-[10px]"></i></a>
             </div>
         </nav>
     </header>
 
-    <!-- Main Content Container -->
-    <main class="max-w-7xl mx-auto px-4 py-6 flex-grow w-full">
+    <!-- NỘI DUNG CHÍNH -->
+    <main class="flex-grow">
+        
+        <!-- MÀN HÌNH TRANG CHỦ -->
+        <div id="screen-home">
+            <!-- HERO BANNER VỚI Ô TÌM KIẾM VÀ 3 NÚT VÀNG -->
+            <div class="hero-banner py-8 px-4 text-white shadow-md relative overflow-hidden">
+                <div class="max-w-5xl mx-auto space-y-6 relative z-10">
+                    <!-- Thanh tìm kiếm thủ tục -->
+                    <div class="bg-white rounded-lg p-2 shadow-lg flex items-center">
+                        <input type="text" id="search-input" placeholder="Nhập từ khoá tìm kiếm thủ tục hành chính (VD: Khai sinh, Hộ tịch...)" class="w-full px-4 py-2.5 text-gray-800 text-sm focus:outline-none">
+                        <button onclick="searchAction()" class="bg-red-700 hover:bg-red-800 text-white px-6 py-2.5 rounded font-semibold text-sm flex items-center space-x-2 whitespace-nowrap">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <span>Tìm kiếm</span>
+                        </button>
+                    </div>
+                    <div class="text-right">
+                        <a href="#" onclick="alert('Chức năng Tìm kiếm nâng cao dành cho học sinh thực hành chuyên sâu.');" class="text-white text-xs hover:underline"><i class="fa-solid fa-sliders mr-1"></i> Tìm kiếm nâng cao</a>
+                    </div>
 
-        <!-- MÀN HÌNH 1: TRANG CHỦ & TRA CỨU -->
-        <div id="screen-home" class="space-y-6">
-            <!-- Banner banner chính -->
-            <div class="bg-gradient-to-r from-blue-900 to-indigo-900 text-white rounded-xl p-6 md:p-10 shadow-md flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
-                <div class="space-y-3 max-w-xl">
-                    <span class="bg-red-600 text-xs font-semibold px-2.5 py-1 rounded uppercase tracking-wider">Cổng Mô Phỏng Chính Thức</span>
-                    <h2 class="text-2xl md:text-3xl font-bold leading-tight">Giải quyết thủ tục hành chính nhanh chóng, minh bạch</h2>
-                    <p class="text-sm text-gray-300">Nền tảng hỗ trợ học sinh thực hành dịch vụ công trực tuyến, nộp hồ sơ điện tử và xác thực qua định danh điện tử VNeID giả lập.</p>
-                </div>
-                <div class="bg-white/10 p-6 rounded-lg backdrop-blur border border-white/20 w-full md:w-80 space-y-4">
-                    <h3 class="font-semibold text-sm text-yellow-300"><i class="fa-solid fa-bolt mr-1"></i> Dịch vụ công trọng điểm</h3>
-                    <button onclick="startService()" class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-2.5 px-4 rounded text-sm transition shadow flex items-center justify-center space-x-2">
-                        <i class="fa-solid fa-file-pen"></i>
-                        <span>Nộp bản sao Trích lục Hộ tịch</span>
-                    </button>
+                    <!-- 3 Nút Vàng Trọng Điểm -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
+                        <button onclick="openServiceForm('Dịch vụ công trực tuyến')" class="gold-btn py-4 px-6 rounded-lg font-bold text-sm shadow-md text-center uppercase tracking-wide flex items-center justify-center space-x-2">
+                            <i class="fa-solid fa-file-pen text-base"></i>
+                            <span>Dịch vụ công trực tuyến</span>
+                        </button>
+                        <button onclick="openServiceForm('Thủ tục hành chính của Đảng')" class="gold-btn py-4 px-6 rounded-lg font-bold text-sm shadow-md text-center uppercase tracking-wide flex items-center justify-center space-x-2">
+                            <i class="fa-solid fa-landmark text-base"></i>
+                            <span>Thủ tục hành chính của Đảng</span>
+                        </button>
+                        <button onclick="openServiceForm('Dịch vụ công liên thông')" class="gold-btn py-4 px-6 rounded-lg font-bold text-sm shadow-md text-center uppercase tracking-wide flex items-center justify-center space-x-2">
+                            <i class="fa-solid fa-network-wired text-base"></i>
+                            <span>Dịch vụ công liên thông: Khai sinh, Khai tử</span>
+                        </button>
+                    </div>
                 </div>
             </div>
 
-            <!-- Các ô dịch vụ nhanh & Tra cứu mã hồ sơ -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="bg-white p-5 rounded-lg shadow border-t-4 border-red-600 space-y-3">
-                    <div class="flex items-center space-x-3 text-red-600 font-bold text-lg">
-                        <i class="fa-solid fa-search"></i>
-                        <h3>Tra cứu hồ sơ</h3>
-                    </div>
-                    <p class="text-xs text-gray-600">Nhập mã hồ sơ được cấp sau khi nộp để kiểm tra tiến độ xử lý.</p>
-                    <div class="flex space-x-2">
-                        <input type="text" id="search-code-input" placeholder="Nhập mã hồ sơ (VD: HS-DVC...)" class="border rounded p-2 text-xs flex-grow focus:outline-none focus:ring-2 focus:ring-red-500">
-                        <button onclick="searchProfile()" class="bg-red-600 text-white px-4 py-2 rounded text-xs font-semibold hover:bg-red-700">Tra cứu</button>
-                    </div>
+            <!-- THANH THÔNG BÁO / SLIDER NGẮN -->
+            <div class="bg-white border-b py-3 px-4 shadow-sm">
+                <div class="max-w-7xl mx-auto flex items-center space-x-3 text-xs text-gray-700 overflow-x-auto whitespace-nowrap">
+                    <span class="bg-red-100 text-red-700 font-bold px-2 py-1 rounded">THÔNG BÁO</span>
+                    <span class="hover:text-red-600 cursor-pointer" onclick="openServiceForm('Công bố dữ liệu số')"><i class="fa-solid fa-circle-dot text-red-600 mr-1"></i> Công bố dữ liệu, hướng dẫn khai thác, sử dụng dữ liệu số sức khỏe điện tử...</span>
+                    <span class="text-gray-300">|</span>
+                    <span class="hover:text-red-600 cursor-pointer" onclick="openServiceForm('Dữ liệu hộ tịch')"><i class="fa-solid fa-circle-dot text-red-600 mr-1"></i> Công bố dữ liệu hộ tịch và hướng dẫn kết nối tích hợp...</span>
                 </div>
+            </div>
 
-                <div class="bg-white p-5 rounded-lg shadow border-t-4 border-blue-800 space-y-3">
-                    <div class="flex items-center space-x-3 text-blue-800 font-bold text-lg">
-                        <i class="fa-solid fa-id-card"></i>
-                        <h3>Định danh VNeID</h3>
-                    </div>
-                    <p class="text-xs text-gray-600">Liên thông tài khoản công dân phục vụ xác thực chữ ký số và nộp hồ sơ.</p>
-                    <button onclick="showLoginModal()" class="w-full bg-blue-800 text-white py-2 rounded text-xs font-semibold hover:bg-blue-900 transition">Đăng nhập VNeID</button>
-                </div>
+            <!-- HAI KHỐI CÔNG DÂN & DOANH NGHIỆP -->
+            <div class="max-w-7xl mx-auto px-4 py-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    
+                    <!-- CỘT CÔNG DÂN -->
+                    <div class="bg-white rounded-xl shadow-md p-6 border-t-4 border-amber-600">
+                        <h2 class="text-center font-bold text-lg text-amber-800 uppercase tracking-wider mb-6 pb-2 border-b">CÔNG DÂN</h2>
+                        <div class="space-y-3">
+                            <div onclick="openServiceForm('Khai sinh')" class="flex items-center justify-between p-3.5 bg-gray-50 hover:bg-amber-50 rounded-lg cursor-pointer transition border border-gray-100">
+                                <div class="flex items-center space-x-3 text-gray-800 font-medium text-sm">
+                                    <div class="w-8 h-8 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center"><i class="fa-solid fa-baby"></i></div>
+                                    <span>Khai sinh</span>
+                                </div>
+                                <i class="fa-solid fa-chevron-right text-xs text-gray-400"></i>
+                            </div>
 
-                <div class="bg-white p-5 rounded-lg shadow border-t-4 border-green-600 space-y-3">
-                    <div class="flex items-center space-x-3 text-green-600 font-bold text-lg">
-                        <i class="fa-solid fa-circle-check"></i>
-                        <h3>Tiêu chí chấm điểm</h3>
+                            <div onclick="openServiceForm('Học tập')" class="flex items-center justify-between p-3.5 bg-gray-50 hover:bg-amber-50 rounded-lg cursor-pointer transition border border-gray-100">
+                                <div class="flex items-center space-x-3 text-gray-800 font-medium text-sm">
+                                    <div class="w-8 h-8 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center"><i class="fa-solid fa-graduation-cap"></i></div>
+                                    <span>Học tập</span>
+                                </div>
+                                <i class="fa-solid fa-chevron-right text-xs text-gray-400"></i>
+                            </div>
+
+                            <div onclick="openServiceForm('Cấp giấy tờ')" class="flex items-center justify-between p-3.5 bg-gray-50 hover:bg-amber-50 rounded-lg cursor-pointer transition border border-gray-100">
+                                <div class="flex items-center space-x-3 text-gray-800 font-medium text-sm">
+                                    <div class="w-8 h-8 rounded-full bg-green-100 text-green-700 flex items-center justify-center"><i class="fa-solid fa-file-lines"></i></div>
+                                    <span>Cấp giấy tờ</span>
+                                </div>
+                                <i class="fa-solid fa-chevron-right text-xs text-gray-400"></i>
+                            </div>
+
+                            <div onclick="openServiceForm('Cư trú và giấy tờ tùy thân')" class="flex items-center justify-between p-3.5 bg-gray-50 hover:bg-amber-50 rounded-lg cursor-pointer transition border border-gray-100">
+                                <div class="flex items-center space-x-3 text-gray-800 font-medium text-sm">
+                                    <div class="w-8 h-8 rounded-full bg-purple-100 text-purple-700 flex items-center justify-center"><i class="fa-solid fa-id-card"></i></div>
+                                    <span>Cư trú và giấy tờ tùy thân</span>
+                                </div>
+                                <i class="fa-solid fa-chevron-right text-xs text-gray-400"></i>
+                            </div>
+
+                            <div onclick="openServiceForm('Hôn nhân và gia đình')" class="flex items-center justify-between p-3.5 bg-gray-50 hover:bg-amber-50 rounded-lg cursor-pointer transition border border-gray-100">
+                                <div class="flex items-center space-x-3 text-gray-800 font-medium text-sm">
+                                    <div class="w-8 h-8 rounded-full bg-red-100 text-red-700 flex items-center justify-center"><i class="fa-solid fa-ring"></i></div>
+                                    <span>Hôn nhân và gia đình</span>
+                                </div>
+                                <i class="fa-solid fa-chevron-right text-xs text-gray-400"></i>
+                            </div>
+                        </div>
                     </div>
-                    <ul class="text-xs text-gray-600 space-y-1.5 list-disc pl-4">
-                        <li>Đăng nhập tài khoản mô phỏng thành công.</li>
-                        <li>Điền đầy đủ thông tin tờ khai không bỏ trống.</li>
-                        <li>Lưu lại mã hồ sơ nộp thành công để báo cáo giáo viên.</li>
-                    </ul>
+
+                    <!-- CỘT DOANH NGHIỆP -->
+                    <div class="bg-white rounded-xl shadow-md p-6 border-t-4 border-blue-800">
+                        <h2 class="text-center font-bold text-lg text-blue-900 uppercase tracking-wider mb-6 pb-2 border-b">DOANH NGHIỆP</h2>
+                        <div class="space-y-3">
+                            <div onclick="openServiceForm('Khởi sự kinh doanh')" class="flex items-center justify-between p-3.5 bg-gray-50 hover:bg-blue-50 rounded-lg cursor-pointer transition border border-gray-100">
+                                <div class="flex items-center space-x-3 text-gray-800 font-medium text-sm">
+                                    <div class="w-8 h-8 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center"><i class="fa-solid fa-rocket"></i></div>
+                                    <span>Khởi sự kinh doanh</span>
+                                </div>
+                                <i class="fa-solid fa-chevron-right text-xs text-gray-400"></i>
+                            </div>
+
+                            <div onclick="openServiceForm('Lao động và bảo hiểm xã hội')" class="flex items-center justify-between p-3.5 bg-gray-50 hover:bg-blue-50 rounded-lg cursor-pointer transition border border-gray-100">
+                                <div class="flex items-center space-x-3 text-gray-800 font-medium text-sm">
+                                    <div class="w-8 h-8 rounded-full bg-green-100 text-green-700 flex items-center justify-center"><i class="fa-solid fa-users-gear"></i></div>
+                                    <span>Lao động và bảo hiểm xã hội</span>
+                                </div>
+                                <i class="fa-solid fa-chevron-right text-xs text-gray-400"></i>
+                            </div>
+
+                            <div onclick="openServiceForm('Tài chính doanh nghiệp')" class="flex items-center justify-between p-3.5 bg-gray-50 hover:bg-blue-50 rounded-lg cursor-pointer transition border border-gray-100">
+                                <div class="flex items-center space-x-3 text-gray-800 font-medium text-sm">
+                                    <div class="w-8 h-8 rounded-full bg-yellow-100 text-yellow-700 flex items-center justify-center"><i class="fa-solid fa-wallet"></i></div>
+                                    <span>Tài chính doanh nghiệp</span>
+                                </div>
+                                <i class="fa-solid fa-chevron-right text-xs text-gray-400"></i>
+                            </div>
+
+                            <div onclick="openServiceForm('Điện lực, đất đai, xây dựng')" class="flex items-center justify-between p-3.5 bg-gray-50 hover:bg-blue-50 rounded-lg cursor-pointer transition border border-gray-100">
+                                <div class="flex items-center space-x-3 text-gray-800 font-medium text-sm">
+                                    <div class="w-8 h-8 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center"><i class="fa-solid fa-building"></i></div>
+                                    <span>Điện lực, đất đai, xây dựng</span>
+                                </div>
+                                <i class="fa-solid fa-chevron-right text-xs text-gray-400"></i>
+                            </div>
+
+                            <div onclick="openServiceForm('Thương mại, quảng cáo')" class="flex items-center justify-between p-3.5 bg-gray-50 hover:bg-blue-50 rounded-lg cursor-pointer transition border border-gray-100">
+                                <div class="flex items-center space-x-3 text-gray-800 font-medium text-sm">
+                                    <div class="w-8 h-8 rounded-full bg-red-100 text-red-700 flex items-center justify-center"><i class="fa-solid fa-store"></i></div>
+                                    <span>Thương mại, quảng cáo</span>
+                                </div>
+                                <i class="fa-solid fa-chevron-right text-xs text-gray-400"></i>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
 
         <!-- MÀN HÌNH 2: MODAL ĐĂNG NHẬP VNEID GIỐNG THẬT -->
-        <div id="screen-login-modal" class="hidden fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4">
-            <div class="bg-white rounded-xl shadow-2xl max-w-md w-full overflow-hidden border border-gray-200 animate-fadeIn">
-                <div class="vneid-bg text-white p-4 flex justify-between items-center">
+        <div id="modal-login" class="hidden fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4">
+            <div class="bg-white rounded-xl shadow-2xl max-w-md w-full overflow-hidden border border-gray-200">
+                <div class="bg-blue-900 text-white p-4 flex justify-between items-center">
                     <div class="flex items-center space-x-2">
                         <i class="fa-solid fa-shield-halved text-yellow-400 text-xl"></i>
-                        <span class="font-bold text-base">Xác thực Định danh Điện tử VNeID</span>
+                        <span class="font-bold text-sm">Xác thực Định danh Điện tử VNeID</span>
                     </div>
                     <button onclick="closeLoginModal()" class="text-white hover:text-gray-200 text-lg font-bold">&times;</button>
                 </div>
                 <div class="p-6 space-y-4">
-                    <div class="text-center space-y-2">
-                        <p class="text-xs text-gray-500">Hệ thống định danh và xác thực điện tử quốc gia</p>
-                        <div class="bg-blue-50 border border-blue-200 p-3 rounded text-xs text-blue-800">
-                            Thực hành đăng nhập bằng tài khoản giả lập dành cho học sinh.
-                        </div>
-                    </div>
+                    <p class="text-xs text-gray-500 text-center">Hệ thống định danh và xác thực điện tử quốc gia phục vụ dịch vụ công trực tuyến.</p>
                     <div class="space-y-3">
                         <div>
-                            <label class="block text-xs font-medium text-gray-700">Số định danh cá nhân / CCCD</label>
-                            <input type="text" id="vneid-username" value="038210001234" class="mt-1 w-full border rounded p-2 text-sm bg-gray-50">
+                            <label class="block text-xs font-semibold text-gray-700">Số định danh cá nhân / CCCD</label>
+                            <input type="text" id="vneid-id" value="038210001234" class="mt-1 w-full border rounded p-2 text-sm bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:outline-none">
                         </div>
                         <div>
-                            <label class="block text-xs font-medium text-gray-700">Mật khẩu VNeID</label>
-                            <input type="password" value="********" class="mt-1 w-full border rounded p-2 text-sm bg-gray-50">
+                            <label class="block text-xs font-semibold text-gray-700">Mật khẩu VNeID</label>
+                            <input type="password" value="********" class="mt-1 w-full border rounded p-2 text-sm bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:outline-none">
                         </div>
                     </div>
-                    <button onclick="executeLogin()" class="w-full vneid-bg text-white font-bold py-2.5 rounded text-sm hover:bg-blue-900 transition shadow">
+                    <button onclick="confirmLogin()" class="w-full bg-blue-900 hover:bg-blue-800 text-white font-bold py-2.5 rounded text-sm transition shadow">
                         Xác nhận Đăng nhập
                     </button>
                     <div class="text-center">
-                        <a href="#" onclick="closeLoginModal();" class="text-xs text-blue-600 hover:underline">Hủy bỏ</a>
+                        <button onclick="closeLoginModal()" class="text-xs text-blue-600 hover:underline">Hủy bỏ</button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- MÀN HÌNH 3: FORM KÊ KHAI HỒ SƠ TRỰC TUYẾN -->
-        <div id="screen-form" class="hidden bg-white rounded-xl shadow-md border border-gray-200 overflow-hidden">
-            <div class="bg-red-700 text-white px-6 py-4 flex justify-between items-center">
-                <h3 class="font-bold text-base uppercase"><i class="fa-solid fa-file-contract mr-2"></i> Tờ khai yêu cầu cấp bản sao trích lục hộ tịch</h3>
-                <button onclick="goHome()" class="text-xs bg-white/20 hover:bg-white/30 px-3 py-1 rounded">Quay lại</button>
+        <!-- MÀN HÌNH 3: TỜ KHAI NỘP HỒ SƠ THỰC HÀNH -->
+        <div id="screen-form" class="hidden max-w-4xl mx-auto px-4 py-8">
+            <div class="bg-white rounded-xl shadow-md border overflow-hidden">
+                <div class="bg-red-800 text-white px-6 py-4 flex justify-between items-center">
+                    <h3 id="form-title-text" class="font-bold text-base uppercase"><i class="fa-solid fa-file-contract mr-2"></i> Tờ khai trực tuyến</h3>
+                    <button onclick="goHome()" class="text-xs bg-white/20 hover:bg-white/30 px-3 py-1 rounded">Quay lại</button>
+                </div>
+                <form onsubmit="submitFormSuccess(event)" class="p-6 space-y-6">
+                    <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 text-xs text-yellow-800">
+                        <strong>Hướng dẫn thực hành:</strong> Học sinh điền đầy đủ các thông tin bên dưới để tiến hành nộp hồ sơ mô phỏng.
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Họ và tên người yêu cầu <span class="text-red-500">*</span></label>
+                            <input type="text" required class="w-full border rounded p-2.5 text-sm focus:ring-2 focus:ring-red-500 focus:outline-none" placeholder="VD: NGUYỄN VĂN A">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Số CCCD / Định danh cá nhân <span class="text-red-500">*</span></label>
+                            <input type="text" required class="w-full border rounded p-2.5 text-sm focus:ring-2 focus:ring-red-500 focus:outline-none" placeholder="Nhập 12 chữ số định danh">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Số điện thoại liên hệ <span class="text-red-500">*</span></label>
+                            <input type="tel" required class="w-full border rounded p-2.5 text-sm focus:ring-2 focus:ring-red-500 focus:outline-none" placeholder="VD: 0912345678">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Cơ quan tiếp nhận giải quyết <span class="text-red-500">*</span></label>
+                            <select class="w-full border rounded p-2.5 text-sm bg-white focus:ring-2 focus:ring-red-500 focus:outline-none">
+                                <option>UBND Xã/Phường nơi cư trú</option>
+                                <option>UBND Quận/Huyện/Thị xã</option>
+                                <option>Bộ phận Một cửa cấp Tỉnh</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Nội dung và lý do yêu cầu <span class="text-red-500">*</span></label>
+                        <textarea rows="3" required class="w-full border rounded p-2.5 text-sm focus:ring-2 focus:ring-red-500 focus:outline-none" placeholder="Ghi rõ chi tiết nội dung đề nghị..."></textarea>
+                    </div>
+
+                    <div class="border-t pt-4 flex justify-end space-x-3">
+                        <button type="button" onclick="goHome()" class="px-5 py-2 border rounded text-xs font-semibold text-gray-600 hover:bg-gray-100">Hủy bỏ</button>
+                        <button type="submit" class="px-6 py-2 bg-red-700 text-white rounded text-xs font-bold hover:bg-red-800 shadow">Nộp hồ sơ trực tuyến</button>
+                    </div>
+                </form>
             </div>
-            <form onsubmit="submitFormFinal(event)" class="p-6 space-y-6">
-                <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 text-xs text-yellow-800">
-                    <strong>Lưu ý:</strong> Các ô có dấu sao màu đỏ (<span class="text-red-500">*</span>) bắt buộc phải điền đầy đủ thông tin chính xác trước khi nộp.
-                </div>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                        <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Họ và tên người yêu cầu <span class="text-red-500">*</span></label>
-                        <input type="text" required id="txt-hoten" class="w-full border border-gray-300 rounded p-2.5 text-sm focus:ring-2 focus:ring-red-500 focus:outline-none" placeholder="VD: NGUYỄN VĂN A">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Số CCCD / Định danh cá nhân <span class="text-red-500">*</span></label>
-                        <input type="text" required id="txt-cccd" class="w-full border border-gray-300 rounded p-2.5 text-sm focus:ring-2 focus:ring-red-500 focus:outline-none" placeholder="Nhập 12 chữ số định danh">
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                        <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Số điện thoại liên hệ <span class="text-red-500">*</span></label>
-                        <input type="tel" required class="w-full border border-gray-300 rounded p-2.5 text-sm focus:ring-2 focus:ring-red-500 focus:outline-none" placeholder="VD: 0912345678">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Loại giấy tờ trích lục <span class="text-red-500">*</span></label>
-                        <select class="w-full border border-gray-300 rounded p-2.5 text-sm focus:ring-2 focus:ring-red-500 focus:outline-none bg-white">
-                            <option>Bản sao Trích lục Giấy khai sinh</option>
-                            <option>Bản sao Trích lục Kết hôn</option>
-                            <option>Bản sao Trích lục Khai tử</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div>
-                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Nội dung và lý do yêu cầu <span class="text-red-500">*</span></label>
-                    <textarea rows="3" required class="w-full border border-gray-300 rounded p-2.5 text-sm focus:ring-2 focus:ring-red-500 focus:outline-none" placeholder="Ghi rõ mục đích sử dụng bản sao trích lục..."></textarea>
-                </div>
-
-                <div class="border-t pt-4 flex justify-end space-x-3">
-                    <button type="button" onclick="goHome()" class="px-5 py-2 border rounded text-xs font-semibold text-gray-600 hover:bg-gray-100">Hủy bỏ</button>
-                    <button type="submit" class="px-6 py-2 bg-red-600 text-white rounded text-xs font-bold hover:bg-red-700 shadow">Nộp hồ sơ trực tuyến</button>
-                </div>
-            </form>
         </div>
 
         <!-- MÀN HÌNH 4: KẾT QUẢ THÀNH CÔNG -->
-        <div id="screen-success" class="hidden bg-white rounded-xl shadow-md border border-green-200 p-8 text-center space-y-6 max-w-xl mx-auto">
-            <div class="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto text-3xl">
-                <i class="fa-solid fa-check"></i>
-            </div>
-            <div class="space-y-2">
-                <h3 class="text-xl font-bold text-green-700">Nộp hồ sơ trực tuyến thành công!</h3>
-                <p class="text-xs text-gray-600">Hệ thống đã tiếp nhận hồ sơ của bạn và chuyển về cơ quan có thẩm quyền xử lý.</p>
-            </div>
-            <div class="bg-gray-50 border border-dashed border-gray-300 p-4 rounded-lg space-y-1">
-                <span class="text-xs text-gray-500 uppercase font-semibold">Mã hồ sơ tiếp nhận của bạn:</span>
-                <div id="ma-ho-so-hien-thi" class="text-xl font-extrabold text-red-600 tracking-wider"></div>
-            </div>
-            <p class="text-[11px] text-gray-500 italic">Học sinh vui lòng chụp ảnh màn hình hoặc ghi lại mã hồ sơ này để nộp báo cáo thực hành cho giáo viên bộ môn.</p>
-            <div>
-                <button onclick="goHome()" class="px-6 py-2.5 bg-blue-800 text-white text-xs font-bold rounded hover:bg-blue-900 shadow">Về trang chủ</button>
+        <div id="screen-success" class="hidden max-w-xl mx-auto px-4 py-12">
+            <div class="bg-white rounded-xl shadow-md border border-green-200 p-8 text-center space-y-6">
+                <div class="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto text-3xl">
+                    <i class="fa-solid fa-check"></i>
+                </div>
+                <div class="space-y-2">
+                    <h3 class="text-xl font-bold text-green-700">Nộp hồ sơ trực tuyến thành công!</h3>
+                    <p class="text-xs text-gray-600">Hệ thống dịch vụ công quốc gia mô phỏng đã tiếp nhận hồ sơ.</p>
+                </div>
+                <div class="bg-gray-50 border border-dashed border-gray-300 p-4 rounded-lg space-y-1">
+                    <span class="text-xs text-gray-500 uppercase font-semibold">Mã hồ sơ của học sinh:</span>
+                    <div id="display-receipt-code" class="text-xl font-extrabold text-red-600 tracking-wider"></div>
+                </div>
+                <p class="text-[11px] text-gray-500 italic">Yêu cầu học sinh chụp lại màn hình hoặc ghi lại mã hồ sơ này nộp báo cáo cho giáo viên.</p>
+                <div>
+                    <button onclick="goHome()" class="px-6 py-2.5 bg-blue-900 text-white text-xs font-bold rounded hover:bg-blue-800 shadow">Về trang chủ</button>
+                </div>
             </div>
         </div>
 
     </main>
 
-    <!-- Footer chuẩn chính phủ -->
-    <footer class="bg-gray-800 text-gray-400 text-xs mt-12 py-6 border-t border-gray-700">
-        <div class="max-w-7xl mx-auto px-4 space-y-2 text-center md:text-left flex flex-col md:flex-row justify-between items-center">
-            <div>
-                <p class="font-bold text-gray-200">CỔNG DỊCH VỤ CÔNG QUỐC GIA - HỆ THỐNG MÔ PHỎNG ĐÀO TẠO</p>
-                <p class="mt-1">Phục vụ công tác giảng dạy môn Tin học cấp Trung học cơ sở.</p>
-            </div>
-            <div class="mt-4 md:mt-0 text-center">
-                <p class="text-yellow-400 font-semibold"><i class="fa-solid fa-graduation-cap mr-1"></i> Thiết kế chuyên biệt cho giáo dục</p>
-            </div>
+    <!-- FOOTER CHUẨN MÔ PHỎNG GIÁO DỤC -->
+    <footer class="bg-gray-900 text-gray-400 text-xs py-6 border-t border-gray-800 mt-12">
+        <div class="max-w-7xl mx-auto px-4 text-center space-y-2">
+            <p class="font-bold text-gray-200 uppercase">CỔNG DỊCH VỤ CÔNG QUỐC GIA - HỆ THỐNG MÔ PHỎNG PHỤC VỤ GIÁO DỤC VÀ ĐÀO TẠO</p>
+            <p>Hệ thống phục vụ công tác giảng dạy thực hành môn Tin học cấp Trung học cơ sở. Dữ liệu là giả định.</p>
         </div>
     </footer>
 
-    <!-- JavaScript Xử lý Luồng Giao Diện -->
+    <!-- JAVASCRIPT XỬ LÝ TƯƠNG TÁC -->
     <script>
-        let isLogged = false;
+        let isUserLoggedIn = false;
+        let pendingServiceName = "";
 
         function hideAllScreens() {
             document.getElementById('screen-home').classList.add('hidden');
@@ -254,54 +333,62 @@
         }
 
         function showLoginModal() {
-            document.getElementById('screen-login-modal').classList.remove('hidden');
+            document.getElementById('modal-login').classList.remove('hidden');
         }
 
         function closeLoginModal() {
-            document.getElementById('screen-login-modal').classList.add('hidden');
+            document.getElementById('modal-login').classList.add('hidden');
         }
 
-        function executeLogin() {
-            isLogged = true;
+        function confirmLogin() {
+            isUserLoggedIn = true;
             closeLoginModal();
-            // Cập nhật giao diện góc phải sau khi đăng nhập thành công
-            document.getElementById('user-display-area').innerHTML = `
-                <div class="flex items-center space-x-2 bg-red-800 px-3 py-1.5 rounded text-xs">
-                    <i class="fa-solid fa-user-check text-yellow-300"></i>
-                    <span class="font-semibold text-white">Công dân (Đã định danh VNeID)</span>
+            // Đổi nút đăng nhập thành trạng thái đã định danh
+            document.getElementById('auth-header-btn').innerHTML = `
+                <div class="flex items-center space-x-2 bg-red-50 border border-red-200 px-3 py-1.5 rounded text-xs">
+                    <i class="fa-solid fa-user-check text-red-700"></i>
+                    <span class="font-bold text-red-800">Công dân (Đã định danh VNeID)</span>
                 </div>
             `;
-            alert('Xác thực tài khoản VNeID thành công! Bây giờ thầy/cô có thể tiến hành nộp hồ sơ.');
+            alert('Xác thực tài khoản VNeID thành công!');
+            if(pendingServiceName) {
+                proceedToForm(pendingServiceName);
+            }
         }
 
-        function startService() {
-            if (!isLogged) {
-                alert('Vui lòng đăng nhập bằng tài khoản VNeID mô phỏng trước khi nộp hồ sơ!');
+        function openServiceForm(serviceName) {
+            pendingServiceName = serviceName;
+            if(!isUserLoggedIn) {
+                alert('Vui lòng đăng nhập bằng tài khoản VNeID mô phỏng trước khi thực hiện nộp thủ tục này!');
                 showLoginModal();
                 return;
             }
+            proceedToForm(serviceName);
+        }
+
+        function proceedToForm(serviceName) {
             hideAllScreens();
+            document.getElementById('form-title-text').innerHTML = `<i class="fa-solid fa-file-contract mr-2"></i> TỜ KHAI TRỰC TUYẾN: ${serviceName.toUpperCase()}`;
             document.getElementById('screen-form').classList.remove('hidden');
             window.scrollTo(0, 0);
         }
 
-        function submitFormFinal(e) {
+        function submitFormSuccess(e) {
             e.preventDefault();
             hideAllScreens();
-            // Sinh mã hồ sơ ngẫu nhiên chuyên nghiệp giống thật
-            const randomCode = 'DVC-THCS-' + Math.floor(Math.random() * 89999 + 10000);
-            document.getElementById('ma-ho-so-hien-thi').innerText = randomCode;
+            const randomCode = 'DVC-' + Math.floor(Math.random() * 899999 + 100000);
+            document.getElementById('display-receipt-code').innerText = randomCode;
             document.getElementById('screen-success').classList.remove('hidden');
             window.scrollTo(0, 0);
         }
 
-        function searchProfile() {
-            const val = document.getElementById('search-code-input').value.trim();
-            if(!val) {
-                alert('Vui lòng nhập mã hồ sơ cần tra cứu.');
+        function searchAction() {
+            const keyword = document.getElementById('search-input').value.trim();
+            if(!keyword) {
+                alert('Vui lòng nhập từ khóa thủ tục hành chính cần tìm.');
                 return;
             }
-            alert('Hồ sơ mang mã: "' + val + '" đang ở trạng thái: [Đang tiếp nhận và chờ cơ quan chức năng xử lý].');
+            alert('Kết quả tìm kiếm cho từ khóa: "' + keyword + '" có 3 thủ tục trực tuyến phù hợp. Vui lòng bấm vào danh mục Công dân bên dưới để nộp hồ sơ.');
         }
     </script>
 </body>
